@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import { BenefitDescription } from "@/components/sections/descriptions/BenefitDescription";
 
 const benefits = [
   {
@@ -40,6 +41,8 @@ const BenefitsSection = () => {
         <Check className="text-primary" size={20} />
         Everything You Need to Succeed
       </h3>
+
+      <BenefitDescription />
       
       <div className="grid gap-4">
         {benefits.map((benefit) => (

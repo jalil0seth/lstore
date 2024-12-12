@@ -4,12 +4,13 @@ import { Shield, Clock, Gift, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 
 const PayPalCheckout = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) {
-      toast.error("Please enter your email");
+    if (!name || !email) {
+      toast.error("Please enter your name and email");
       return;
     }
     // Here you would integrate with PayPal
@@ -41,6 +42,17 @@ const PayPalCheckout = () => {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-gray-200">Full Name</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-lg input-focus text-white"
+            placeholder="John Doe"
+          />
+        </div>
+
         <div className="space-y-2">
           <label className="text-sm font-medium text-gray-200">Email for License Delivery</label>
           <input

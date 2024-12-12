@@ -1,29 +1,35 @@
 import { motion } from "framer-motion";
+import { ProductImage } from "@/components/ui/product-image";
+
+const features = [
+  {
+    title: "Modern Interface",
+    description: "Intuitive design for maximum productivity",
+    image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?w=1200&h=800&fit=crop"
+  },
+  {
+    title: "Advanced Tools",
+    description: "Professional-grade CAD features",
+    image: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=600&h=400&fit=crop"
+  },
+  {
+    title: "3D Modeling",
+    description: "Create complex 3D designs easily",
+    image: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=600&h=400&fit=crop"
+  },
+  {
+    title: "Collaboration",
+    description: "Work seamlessly with your team",
+    image: "https://images.unsplash.com/photo-1664575197229-3bbebc281874?w=600&h=400&fit=crop"
+  },
+  {
+    title: "Project Management",
+    description: "Track and manage your projects efficiently",
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop"
+  }
+];
 
 const ProductShowcase = () => {
-  const features = [
-    {
-      title: "Modern Interface",
-      description: "Intuitive design for maximum productivity",
-      image: "https://images.unsplash.com/photo-1545670723-196ed0954986?w=1200&h=800&fit=crop"
-    },
-    {
-      title: "Advanced Tools",
-      description: "Professional-grade CAD features",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop"
-    },
-    {
-      title: "3D Modeling",
-      description: "Create complex 3D designs easily",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop"
-    },
-    {
-      title: "Collaboration",
-      description: "Work seamlessly with your team",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop"
-    }
-  ];
-
   return (
     <div className="space-y-6">
       <motion.div
@@ -31,7 +37,7 @@ const ProductShowcase = () => {
         animate={{ opacity: 1 }}
         className="glass-card p-4 rounded-xl overflow-hidden"
       >
-        <img 
+        <ProductImage 
           src={features[0].image}
           alt="AutoCAD 2024 Interface"
           className="rounded-lg w-full hover:scale-105 transition-transform duration-300"
@@ -48,7 +54,7 @@ const ProductShowcase = () => {
             className="glass-card p-4 rounded-xl group cursor-pointer"
           >
             <div className="relative overflow-hidden rounded-lg">
-              <img 
+              <ProductImage 
                 src={feature.image}
                 alt={feature.title}
                 className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
