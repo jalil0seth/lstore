@@ -9,7 +9,7 @@ const FacebookBanner = () => {
       className="bg-[#1877F2]/10 border border-[#1877F2]/20 text-[#1877F2] px-4 py-2 rounded-full text-sm font-medium flex items-center justify-center gap-2"
     >
       <Facebook size={16} />
-      <span>Special Facebook-only offer - Save an extra 10%!</span>
+      <span>Special offer!</span>
     </motion.div>
   );
 };

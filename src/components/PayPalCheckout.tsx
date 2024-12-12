@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Shield, Clock, Gift, CheckCircle2 } from "lucide-react";
+import { Shield, Clock, Gift, CheckCircle2, User, Mail } from "lucide-react";
 import { toast } from "sonner";
 
 const PayPalCheckout = () => {
@@ -42,26 +42,38 @@ const PayPalCheckout = () => {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-gray-200">Full Name</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-lg input-focus text-white"
-            placeholder="John Doe"
-          />
-        </div>
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-200 flex items-center gap-2">
+              <User className="w-4 h-4 text-primary" />
+              Full Name
+              <span className="text-primary">*</span>
+            </label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-lg input-focus text-white"
+              placeholder="John Doe"
+              required
+            />
+          </div>
 
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-gray-200">Email for License Delivery</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-lg input-focus text-white"
-            placeholder="your@email.com"
-          />
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-200 flex items-center gap-2">
+              <Mail className="w-4 h-4 text-primary" />
+              Email for License Delivery
+              <span className="text-primary">*</span>
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-lg input-focus text-white"
+              placeholder="your@email.com"
+              required
+            />
+          </div>
         </div>
 
         <div className="space-y-4">

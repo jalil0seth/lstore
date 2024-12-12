@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Building, Shield, Award, Clock } from "lucide-react";
 import FacebookBanner from "@/components/marketing/FacebookBanner";
-import PayPalCheckout from "@/components/PayPalCheckout";
+import CheckoutForm from "@/components/checkout/CheckoutForm";
 import HeroSection from "@/components/sections/HeroSection";
 import BenefitsSection from "@/components/sections/BenefitsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
@@ -16,20 +16,6 @@ const Index = () => {
           <FacebookBanner />
           <HeroSection />
 
-          {/* Product Description */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <p className="text-lg text-gray-300 leading-relaxed">
-              Experience the next generation of CAD software with AutoCAD 2024 Professional. 
-              Packed with powerful features, intuitive tools, and advanced 3D modeling capabilities, 
-              it's the perfect solution for architects, engineers, and designers. Our software 
-              streamlines your workflow, enhances collaboration, and brings your creative vision to life.
-            </p>
-          </motion.div>
-
           {/* Main Content Grid */}
           <div className="grid md:grid-cols-2 gap-8 items-start">
             {/* Left Column - Product Info */}
@@ -39,9 +25,9 @@ const Index = () => {
               <TestimonialsSection />
             </div>
 
-            {/* Right Column - PayPal Checkout */}
+            {/* Right Column - Checkout Form */}
             <div className="sticky top-8">
-              <PayPalCheckout />
+              <CheckoutForm />
             </div>
           </div>
 
