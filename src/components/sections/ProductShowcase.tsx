@@ -40,11 +40,11 @@ const ProductShowcase = () => {
         <ProductImage 
           src={features[0].image}
           alt="AutoCAD 2024 Interface"
-          className="rounded-lg w-full hover:scale-105 transition-transform duration-300"
+          className="rounded-lg w-full aspect-video object-cover hover:scale-105 transition-transform duration-300"
         />
       </motion.div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {features.slice(1).map((feature, index) => (
           <motion.div
             key={feature.title}
@@ -57,7 +57,7 @@ const ProductShowcase = () => {
               <ProductImage 
                 src={feature.image}
                 alt={feature.title}
-                className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                className="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
                 <div>
