@@ -17,13 +17,16 @@ export const Footer = () => {
       className="relative mt-16 border-t border-gray-800"
     >
       <div className="container mx-auto px-4 py-8">
-        <FooterContent className="pb-24" />
+        <FooterContent className="pb-24 md:pb-8" />
       </div>
 
-      {/* Fixed CTA Button */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-gray-900 to-gray-900/80 backdrop-blur-sm border-t border-gray-800">
+      {/* Fixed CTA Button - Mobile Only */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-gray-900 to-gray-900/80 backdrop-blur-sm border-t border-gray-800 z-50">
         <div className="container mx-auto flex justify-center">
-          <CtaButton onClick={scrollToForm}>
+          <CtaButton 
+            onClick={scrollToForm}
+            className="w-full max-w-md shadow-xl bg-gradient-to-r from-primary to-primary-dark"
+          >
             Get The Offer Now
           </CtaButton>
         </div>
