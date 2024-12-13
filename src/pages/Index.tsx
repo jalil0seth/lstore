@@ -13,22 +13,7 @@ const Index = () => {
     <AnimatePresence>
       <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
         <div className="container mx-auto px-4 py-8 space-y-12">
-          <FacebookBanner />
           <HeroSection />
-
-          {/* Product Description */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <p className="text-lg text-gray-300 leading-relaxed">
-              Experience the next generation of CAD software with AutoCAD 2024 Professional. 
-              Packed with powerful features, intuitive tools, and advanced 3D modeling capabilities, 
-              it's the perfect solution for architects, engineers, and designers. Our software 
-              streamlines your workflow, enhances collaboration, and brings your creative vision to life.
-            </p>
-          </motion.div>
 
           {/* Main Content Grid */}
           <div className="grid md:grid-cols-2 gap-8 items-start">
