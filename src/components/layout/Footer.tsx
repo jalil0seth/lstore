@@ -1,27 +1,31 @@
 import { motion } from "framer-motion";
+import { CtaButton } from "@/components/ui/buttons/CtaButton";
+import { FooterContent } from "./FooterContent";
 
 export const Footer = () => {
+  const scrollToForm = () => {
+    const form = document.querySelector('[data-checkout-form]');
+    if (form) {
+      form.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <motion.footer
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="mt-16 border-t border-gray-800 py-8"
+      className="relative mt-16 border-t border-gray-800"
     >
-      <div className="container mx-auto px-4">
-        <div className="text-sm text-gray-400 text-center space-y-4">
-          <p>
-            © 2024 AutoCAD Professional. All rights reserved.
-          </p>
-          <p className="max-w-2xl mx-auto">
-            Disclaimer: This is a demonstration website. AutoCAD® is a registered trademark 
-            of Autodesk, Inc. This website and the products offered are not affiliated with, 
-            endorsed by, or sponsored by Autodesk, Inc. All product names, logos, and brands 
-            are property of their respective owners.
-          </p>
-          <p className="text-xs">
-            Prices and offers are subject to change. Not all features may be available in all regions.
-            Please review the full terms and conditions before purchase.
-          </p>
+      <div className="container mx-auto px-4 py-8">
+        <FooterContent className="pb-24" />
+      </div>
+
+      {/* Fixed CTA Button */}
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-gray-900 to-gray-900/80 backdrop-blur-sm border-t border-gray-800">
+        <div className="container mx-auto flex justify-center">
+          <CtaButton onClick={scrollToForm}>
+            Get The Offer Now
+          </CtaButton>
         </div>
       </div>
     </motion.footer>

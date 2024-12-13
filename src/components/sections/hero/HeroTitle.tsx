@@ -12,7 +12,7 @@ export const HeroTitle = () => {
         >
           <Star className="w-5 h-5 text-yellow-400" />
         </motion.div>
-        <span className="text-sm font-medium">Special Facebook Offer - Save 50% Today!</span>
+        <span className="text-sm font-medium">Special Offer - Save 50% Today!</span>
       </div>
       
       <div className="space-y-4">
