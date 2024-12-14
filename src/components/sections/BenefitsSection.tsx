@@ -19,7 +19,7 @@ const BenefitsSection = () => {
         {data.productDetails.heading}
       </h3>
 
-      <p className="text-muted text-sm leading-relaxed">
+      <p className="text-light text-sm leading-relaxed">
         {data.productDetails.description}
       </p>
       
@@ -33,7 +33,7 @@ const BenefitsSection = () => {
             <h4 className="text-sm font-medium text-default group-hover:text-primary transition-colors">
               ✓ {benefit.title}
             </h4>
-            <p className="text-sm text-light mt-1">
+            <p className="text-sm text-muted mt-1">
               {benefit.description}
             </p>
           </motion.div>

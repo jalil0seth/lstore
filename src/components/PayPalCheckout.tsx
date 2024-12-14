@@ -118,7 +118,7 @@ const PayPalCheckout = () => {
         />
         
         {/* Main Card */}
-        <div className="relative glass-card rounded-2xl border border-gray-200/50 shadow-xl">
+        <div className="relative glass-card rounded-2xl border border-light shadow-xl">
           <CheckoutHeader />
           
           <div className="p-4 sm:p-6 space-y-6">
@@ -137,7 +137,7 @@ const PayPalCheckout = () => {
         </div>
       </div>
 
-      <div className="mt-6 text-center text-sm text-gray-600">
+      <div className="mt-6 text-center text-sm text-muted">
         <p className="flex items-center justify-center gap-2">
           <Clock size={16} />
           Limited time offer - Secure it now!

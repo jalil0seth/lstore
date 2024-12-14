@@ -4,210 +4,201 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 262 84% 75%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 262 84% 75%;
+    /* Color System */
+    --color-primary: theme('colors.blue.600');
+    --color-primary-dark: theme('colors.blue.700');
+    --color-primary-light: theme('colors.blue.500');
+    
+    /* Text Colors */
+    --text-default: theme('colors.gray.700');
+    --text-muted: theme('colors.gray.600');
+    --text-light: theme('colors.gray.500');
+    --text-lighter: theme('colors.gray.400');
+    --text-dark: theme('colors.gray.800');
+    --text-darker: theme('colors.gray.900');
+    
+    /* Background Colors */
+    --bg-subtle: theme('colors.gray.50');
+    --bg-light: theme('colors.white');
+    --bg-dark: theme('colors.gray.900');
+    
+    /* Border Colors */
+    --border-subtle: theme('colors.gray.200');
+    --border-light: theme('colors.gray.100');
+    --border-dark: theme('colors.gray.300');
+    --border-primary: theme('colors.blue.200');
+    
+    /* Accent Colors */
+    --accent-blue: theme('colors.blue.500');
+    --accent-purple: theme('colors.purple.500');
+    --accent-yellow: theme('colors.yellow.500');
+    
+    /* Status Colors */
+    --color-success: theme('colors.green.500');
+    --color-error: theme('colors.red.500');
+    --color-warning: theme('colors.yellow.500');
+    --color-info: theme('colors.blue.500');
   }
-}
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+  /* Dark theme variables */
+  [data-theme='dark'] {
+    --color-primary: theme('colors.blue.400');
+    --color-primary-dark: theme('colors.blue.500');
+    --color-primary-light: theme('colors.blue.300');
+    
+    --text-default: theme('colors.gray.100');
+    --text-muted: theme('colors.gray.300');
+    --text-light: theme('colors.gray.400');
+    --text-lighter: theme('colors.gray.500');
+    --text-dark: theme('colors.gray.50');
+    --text-darker: theme('colors.white');
+    
+    --bg-subtle: theme('colors.gray.900');
+    --bg-light: theme('colors.gray.800');
+    --bg-dark: theme('colors.gray.950');
+    
+    --border-subtle: theme('colors.gray.700');
+    --border-light: theme('colors.gray.800');
+    --border-dark: theme('colors.gray.600');
+    --border-primary: theme('colors.blue.700');
   }
 }
 
 @layer components {
+  /* Text Styles */
+  .text-default {
+    @apply text-[var(--text-default)];
+  }
+  
+  .text-muted {
+    @apply text-[var(--text-muted)];
+  }
+  
+  .text-light {
+    @apply text-[var(--text-light)];
+  }
+  
+  .text-lighter {
+    @apply text-[var(--text-lighter)];
+  }
+  
+  .text-dark {
+    @apply text-[var(--text-dark)];
+  }
+  
+  .text-darker {
+    @apply text-[var(--text-darker)];
+  }
+
+  /* Background Styles */
+  .bg-subtle {
+    @apply bg-[var(--bg-subtle)];
+  }
+  
+  .bg-light {
+    @apply bg-[var(--bg-light)];
+  }
+  
+  .bg-dark {
+    @apply bg-[var(--bg-dark)];
+  }
+
+  /* Border Styles */
+  .border-subtle {
+    @apply border-[var(--border-subtle)];
+  }
+  
+  .border-light {
+    @apply border-[var(--border-light)];
+  }
+  
+  .border-dark {
+    @apply border-[var(--border-dark)];
+  }
+  
+  .border-primary {
+    @apply border-[var(--border-primary)];
+  }
+
+  /* Primary Colors */
+  .text-primary {
+    @apply text-[var(--color-primary)];
+  }
+  
+  .text-primary-dark {
+    @apply text-[var(--color-primary-dark)];
+  }
+  
+  .text-primary-light {
+    @apply text-[var(--color-primary-light)];
+  }
+  
+  .bg-primary {
+    @apply bg-[var(--color-primary)];
+  }
+  
+  .bg-primary-dark {
+    @apply bg-[var(--color-primary-dark)];
+  }
+  
+  .bg-primary-light {
+    @apply bg-[var(--color-primary-light)];
+  }
+
+  /* Accent Colors */
+  .text-accent-blue {
+    @apply text-[var(--accent-blue)];
+  }
+  
+  .text-accent-purple {
+    @apply text-[var(--accent-purple)];
+  }
+  
+  .text-accent-yellow {
+    @apply text-[var(--accent-yellow)];
+  }
+
+  /* Status Colors */
+  .text-success {
+    @apply text-[var(--color-success)];
+  }
+  
+  .text-error {
+    @apply text-[var(--color-error)];
+  }
+  
+  .text-warning {
+    @apply text-[var(--color-warning)];
+  }
+  
+  .text-info {
+    @apply text-[var(--color-info)];
+  }
+
+  /* Gradient Styles */
+  .bg-page-gradient {
+    @apply bg-gradient-to-b from-[var(--bg-subtle)] to-[var(--bg-light)];
+  }
+  
+  .bg-overlay-gradient {
+    @apply bg-gradient-to-t from-black/60 to-transparent;
+  }
+
   /* Card styles */
   .glass-card {
-    @apply bg-white/90 border border-gray-200/50 shadow-lg;
+    @apply bg-[var(--bg-light)] bg-opacity-95 border border-[var(--border-subtle)] border-opacity-30 shadow-lg;
   }
 
   .card-base {
-    @apply bg-gray-50 rounded-xl p-4;
+    @apply bg-subtle rounded-xl p-4;
   }
 
   .card-content {
     @apply space-y-4;
   }
 
-  /* Text colors */
-  .text-default {
-    @apply text-gray-800;
-  }
-
-  .text-muted {
-    @apply text-gray-600;
-  }
-
-  .text-light {
-    @apply text-gray-500;
-  }
-
-  .text-lighter {
-    @apply text-gray-400;
-  }
-
-  .text-success {
-    @apply text-green-600;
-  }
-
-  .text-error {
-    @apply text-red-500;
-  }
-
-  .text-primary {
-    @apply text-blue-600;
-  }
-
-  .text-primary-dark {
-    @apply text-blue-800;
-  }
-
-  .text-primary-light {
-    @apply text-blue-500;
-  }
-
-  /* Accent colors */
-  .text-accent-blue {
-    @apply text-blue-400;
-  }
-
-  .text-accent-purple {
-    @apply text-purple-400;
-  }
-
-  .text-accent-yellow {
-    @apply text-yellow-400;
-  }
-
-  .text-secondary-dark {
-    @apply text-gray-200;
-  }
-
-  /* Background colors */
-  .bg-subtle {
-    @apply bg-gray-50;
-  }
-
-  .bg-primary-subtle {
-    @apply bg-blue-50;
-  }
-
-  .bg-progress {
-    @apply bg-blue-500;
-  }
-
-  .bg-progress-track {
-    @apply bg-gray-100;
-  }
-
-  /* Background gradients */
-  .bg-page-gradient {
-    @apply bg-gradient-to-b from-gray-50 to-white;
-  }
-
-  .bg-overlay-gradient {
-    @apply bg-gradient-to-t from-black/60 to-transparent;
-  }
-
-  /* Border colors */
-  .border-subtle {
-    @apply border-gray-200;
-  }
-
-  .border-error {
-    @apply border-red-300;
-  }
-
-  .border-primary-subtle {
-    @apply border-blue-100;
-  }
-
-  /* Focus states */
-  .focus-primary {
-    @apply focus:border-blue-500 focus:ring-blue-200;
-  }
-
-  .focus-error {
-    @apply focus:border-red-500 focus:ring-red-200;
-  }
-
-  /* Layout styles */
-  .container-base {
-    @apply container mx-auto px-4 py-8 space-y-12;
-  }
-
-  .grid-layout {
-    @apply grid lg:grid-cols-2 gap-8 items-start;
-  }
-
-  /* Input styles */
-  .input-focus {
-    @apply focus:ring-2 focus:ring-primary focus:border-transparent outline-none;
-  }
-
   /* Text styles */
   .text-title {
-    @apply text-xl font-semibold text-gray-800;
-  }
-
-  .text-subtitle {
-    @apply text-sm text-gray-600;
-  }
-
-  .text-description {
-    @apply text-sm text-gray-500;
-  }
-
-  /* Button styles */
-  .button-primary {
-    @apply bg-primary text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:bg-primary/90 transition-colors;
-  }
-
-  .button-secondary {
-    @apply bg-gray-100 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors;
-  }
-
-  /* Spacing utilities */
-  .section-spacing {
-    @apply space-y-8;
-  }
-
-  .content-spacing {
-    @apply space-y-4;
-  }
-
-  /* Animation classes */
-  .hover-lift {
-    @apply transition-transform hover:-translate-y-1;
-  }
-
-  /* Badge styles */
-  .badge {
-    @apply px-3 py-1 rounded-full text-xs font-medium;
-  }
-
-  .badge-success {
-    @apply bg-green-500/10 text-green-600 border-green-500/20;
+    @apply text-xl font-semibold text-darker;
   }
 }

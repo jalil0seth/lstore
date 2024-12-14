@@ -91,7 +91,7 @@ export const CheckoutForm = ({
               value={fullName}
               onChange={(e) => onFullNameChange(e.target.value)}
               onBlur={() => handleBlur('fullName')}
-              className={`w-full px-4 py-3 bg-white border ${
+              className={`w-full px-4 py-3 bg-subtle border ${
                 errors.fullName 
                   ? 'border-error focus-error' 
                   : 'border-subtle focus-primary'
@@ -115,7 +115,7 @@ export const CheckoutForm = ({
           type="text"
           value={companyName}
           onChange={(e) => onCompanyNameChange(e.target.value)}
-          className="w-full px-4 py-3 bg-white border border-subtle rounded-lg focus-primary ring-offset-2 focus:ring-2 focus:ring-opacity-50 transition-colors text-default placeholder-gray-500"
+          className="w-full px-4 py-3 bg-subtle border border-subtle rounded-lg focus-primary ring-offset-2 focus:ring-2 focus:ring-opacity-50 transition-colors text-default placeholder-gray-500"
           placeholder="Company Name (Optional)"
           disabled={loading}
         />
@@ -127,7 +127,7 @@ export const CheckoutForm = ({
               value={email}
               onChange={(e) => onEmailChange(e.target.value)}
               onBlur={() => handleBlur('email')}
-              className={`w-full px-4 py-3 bg-white border ${
+              className={`w-full px-4 py-3 bg-subtle border ${
                 errors.email 
                   ? 'border-error focus-error' 
                   : 'border-subtle focus-primary'

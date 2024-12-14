@@ -13,10 +13,10 @@ export const SecurityFeatures = () => {
   const [data] = useState(heroData);
 
   return (
-    <div className="pt-4 border-t border-gray-200">
+    <div className="pt-4 border-t border-subtle">
       <div className="grid grid-cols-2 gap-3">
         {data.paymentFeatures.map((feature) => (
-          <div key={feature} className="flex items-center gap-2 text-xs text-gray-600">
+          <div key={feature} className="flex items-center gap-2 text-xs text-muted">
             <CheckCircle2 size={14} className="text-primary" />
             <span>{feature}</span>
           </div>

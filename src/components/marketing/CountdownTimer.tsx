@@ -76,7 +76,7 @@ const CountdownTimer = () => {
       className="fixed bottom-20 left-0 right-0 mx-4 md:relative md:bottom-auto md:mx-0 z-10"
     >
       <motion.div 
-        className="flex flex-col items-center gap-2 p-4 rounded-xl bg-white/95 border border-primary-subtle shadow-lg"
+        className="flex flex-col items-center gap-2 p-4 rounded-xl glass-card border border-primary-subtle shadow-lg"
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 400 }}
       >
@@ -91,7 +91,7 @@ const CountdownTimer = () => {
         </h3>
         <div className="w-full max-w-xs">
           <motion.div 
-            className="w-full h-2 bg-primary-subtle rounded-full overflow-hidden"
+            className="w-full h-2 bg-secondary rounded-full overflow-hidden"
             whileHover={{ scale: 1.05 }}
           >
             <motion.div 

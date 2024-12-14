@@ -38,10 +38,10 @@ const TestimonialsSection = () => {
                 <p className="text-light mb-3">{testimonial.content}</p>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium text-muted">{testimonial.name}</p>
+                    <p className="font-medium text-default ">{testimonial.name}</p>
                     <p className="text-sm text-lighter">{testimonial.role} at {testimonial.company}</p>
                   </div>
-                  <Badge variant="success" className="badge badge-success">
+                  <Badge variant="success" className="bg-green-500/10 text-green-600 border-green-500/20">
                     {testimonial.highlight}
                   </Badge>
                 </div>
