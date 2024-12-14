@@ -5,48 +5,24 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
+    --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
+    --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
-    --primary: 262.1 83.3% 57.8%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 262 84% 75%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 262.1 83.3% 57.8%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 20% 98%;
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 263.4 70% 50.4%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 263.4 70% 50.4%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 262 84% 75%;
   }
 }
 
@@ -55,39 +31,183 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-.glass-card {
-  @apply bg-background/10 backdrop-blur-lg border border-border/20 shadow-lg;
-}
-
-.input-focus {
-  @apply focus:ring-2 focus:ring-primary focus:border-transparent outline-none;
-}
-
-/* Add smooth scrolling to the whole page */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Add padding to the bottom on mobile to account for the fixed button */
-@media (max-width: 1024px) {
-  body {
-    padding-bottom: 80px;
+@layer components {
+  /* Card styles */
+  .glass-card {
+    @apply bg-white/90 border border-gray-200/50 shadow-lg;
   }
-}
 
-/* Theme transition */
-:root {
-  --transition-duration: 0.2s;
-}
+  .card-base {
+    @apply bg-gray-50 rounded-xl p-4;
+  }
 
-.theme-transition {
-  transition: background-color var(--transition-duration) ease-in-out,
-              border-color var(--transition-duration) ease-in-out,
-              color var(--transition-duration) ease-in-out,
-              box-shadow var(--transition-duration) ease-in-out;
+  .card-content {
+    @apply space-y-4;
+  }
+
+  /* Text colors */
+  .text-default {
+    @apply text-gray-800;
+  }
+
+  .text-muted {
+    @apply text-gray-600;
+  }
+
+  .text-light {
+    @apply text-gray-500;
+  }
+
+  .text-lighter {
+    @apply text-gray-400;
+  }
+
+  .text-success {
+    @apply text-green-600;
+  }
+
+  .text-error {
+    @apply text-red-500;
+  }
+
+  .text-primary {
+    @apply text-blue-600;
+  }
+
+  .text-primary-dark {
+    @apply text-blue-800;
+  }
+
+  .text-primary-light {
+    @apply text-blue-500;
+  }
+
+  /* Accent colors */
+  .text-accent-blue {
+    @apply text-blue-400;
+  }
+
+  .text-accent-purple {
+    @apply text-purple-400;
+  }
+
+  .text-accent-yellow {
+    @apply text-yellow-400;
+  }
+
+  .text-secondary-dark {
+    @apply text-gray-200;
+  }
+
+  /* Background colors */
+  .bg-subtle {
+    @apply bg-gray-50;
+  }
+
+  .bg-primary-subtle {
+    @apply bg-blue-50;
+  }
+
+  .bg-progress {
+    @apply bg-blue-500;
+  }
+
+  .bg-progress-track {
+    @apply bg-gray-100;
+  }
+
+  /* Background gradients */
+  .bg-page-gradient {
+    @apply bg-gradient-to-b from-gray-50 to-white;
+  }
+
+  .bg-overlay-gradient {
+    @apply bg-gradient-to-t from-black/60 to-transparent;
+  }
+
+  /* Border colors */
+  .border-subtle {
+    @apply border-gray-200;
+  }
+
+  .border-error {
+    @apply border-red-300;
+  }
+
+  .border-primary-subtle {
+    @apply border-blue-100;
+  }
+
+  /* Focus states */
+  .focus-primary {
+    @apply focus:border-blue-500 focus:ring-blue-200;
+  }
+
+  .focus-error {
+    @apply focus:border-red-500 focus:ring-red-200;
+  }
+
+  /* Layout styles */
+  .container-base {
+    @apply container mx-auto px-4 py-8 space-y-12;
+  }
+
+  .grid-layout {
+    @apply grid lg:grid-cols-2 gap-8 items-start;
+  }
+
+  /* Input styles */
+  .input-focus {
+    @apply focus:ring-2 focus:ring-primary focus:border-transparent outline-none;
+  }
+
+  /* Text styles */
+  .text-title {
+    @apply text-xl font-semibold text-gray-800;
+  }
+
+  .text-subtitle {
+    @apply text-sm text-gray-600;
+  }
+
+  .text-description {
+    @apply text-sm text-gray-500;
+  }
+
+  /* Button styles */
+  .button-primary {
+    @apply bg-primary text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:bg-primary/90 transition-colors;
+  }
+
+  .button-secondary {
+    @apply bg-gray-100 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors;
+  }
+
+  /* Spacing utilities */
+  .section-spacing {
+    @apply space-y-8;
+  }
+
+  .content-spacing {
+    @apply space-y-4;
+  }
+
+  /* Animation classes */
+  .hover-lift {
+    @apply transition-transform hover:-translate-y-1;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply bg-green-500/10 text-green-600 border-green-500/20;
+  }
 }

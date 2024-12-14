@@ -1,18 +1,22 @@
 import { CheckCircle2 } from "lucide-react";
+import { heroData } from "../hero/hero.ts";
+import { useState } from "react";
+
+const securityFeatures = [
+  "Official PayPal Protection",
+  "Secure payment processing",
+  "Money-back guarantee",
+  "Instant delivery"
+];
 
 export const SecurityFeatures = () => {
-  const features = [
-    "Official PayPal Protection",
-    "Secure payment processing",
-    "Money-back guarantee",
-    "Instant delivery"
-  ];
+  const [data] = useState(heroData);
 
   return (
-    <div className="pt-4 border-t border-gray-700">
+    <div className="pt-4 border-t border-gray-200">
       <div className="grid grid-cols-2 gap-3">
-        {features.map((feature) => (
-          <div key={feature} className="flex items-center gap-2 text-xs text-gray-400">
+        {data.paymentFeatures.map((feature) => (
+          <div key={feature} className="flex items-center gap-2 text-xs text-gray-600">
             <CheckCircle2 size={14} className="text-primary" />
             <span>{feature}</span>
           </div>

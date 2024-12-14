@@ -1,5 +1,5 @@
 export const BenefitDescription = () => (
-  <p className="text-gray-400 text-sm leading-relaxed">
+  <p className="text-muted text-sm leading-relaxed">
     AutoCAD 2024 Professional comes with everything you need to succeed in your design journey. 
     From comprehensive training materials to lifetime updates, we ensure you have the tools and 
     support to excel in your projects. Our premium template library saves you countless hours, 

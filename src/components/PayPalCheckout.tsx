@@ -1,115 +1,161 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Shield, Clock, Gift, CheckCircle2, User, Mail } from "lucide-react";
+import { Shield, Clock, Gift, CheckCircle2, Star } from "lucide-react";
 import { toast } from "sonner";
+import { CheckoutForm } from "./checkout/CheckoutForm";
+import { CheckoutHeader } from "./checkout/CheckoutHeader";
+import { SecurityFeatures } from "./checkout/SecurityFeatures";
+import { PriceDisplay } from "./checkout/PriceDisplay";
+import { OrderSummary } from "./checkout/OrderSummary";
+import { heroData } from "./hero/hero";
+
+interface OrderResponse {
+  orderId: string;
+  url: string;
+}
 
 const PayPalCheckout = () => {
-  const [name, setName] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showSummary, setShowSummary] = useState(false);
+  const [orderData, setOrderData] = useState<OrderResponse | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Load saved data from localStorage
+  useEffect(() => {
+    const savedData = localStorage.getItem('userCheckoutData');
+    if (savedData) {
+      const { fullName: savedName, companyName: savedCompany, email: savedEmail } = JSON.parse(savedData);
+      setFullName(savedName || "");
+      setCompanyName(savedCompany || "");
+      setEmail(savedEmail || "");
+    }
+  }, []);
+
+  // Save data to localStorage whenever it changes
+  useEffect(() => {
+    if (fullName || companyName || email) {
+      localStorage.setItem('userCheckoutData', JSON.stringify({ fullName, companyName, email }));
+    }
+  }, [fullName, companyName, email]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email) {
+    if (!fullName || !email) {
       toast.error("Please enter your name and email");
       return;
     }
-    // Here you would integrate with PayPal
-    toast.success("Redirecting to PayPal...");
+
+    setLoading(true);
+    
+    try {
+      const productId = window.location.pathname.replace(/^\/|\/$/g, '').split('/').filter(Boolean).pop();
+      
+      const response = await fetch('/order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName,
+          companyName,
+          email,
+          productId
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create order');
+      }
+
+      const data: OrderResponse = await response.json();
+      setOrderData(data);
+      setShowSummary(true);
+      
+      // Store order data in localStorage
+      localStorage.setItem('lastOrder', JSON.stringify(data));
+      
+      toast.success("Order created successfully!");
+    } catch (error) {
+      console.error('Error creating order:', error);
+      toast.error("Failed to create order. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const securityFeatures = [
-    "Official PayPal Protection",
-    "Secure payment processing",
-    "Money-back guarantee",
-    "Instant delivery"
-  ];
+  const handleClose = () => {
+    setShowSummary(false);
+    if (orderData?.url) {
+      window.location.href = orderData.url;
+    }
+  };
+
+  const handleSkip = () => {
+    setShowSummary(false);
+  };
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="w-full max-w-md mx-auto p-8 rounded-xl glass-card border border-primary/20"
+      className="w-full max-w-md mx-auto"
+      data-checkout-form
     >
-      <div className="mb-6 space-y-2">
-        <div className="flex items-center justify-center gap-2 text-primary font-semibold">
-          <Gift className="animate-pulse" />
-          <span>Special Bonus: Premium Templates</span>
-        </div>
-        <div className="text-center text-sm text-gray-400">
-          Worth $299 - Included with your purchase today!
+      <div className="relative">
+        {/* Floating Elements */}
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-4 -right-4 w-16 h-16 bg-primary/20 rounded-full blur-xl"
+        />
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute -bottom-4 -left-4 w-20 h-20 bg-purple-500/20 rounded-full blur-xl"
+        />
+        
+        {/* Main Card */}
+        <div className="relative glass-card rounded-2xl border border-gray-200/50 shadow-xl">
+          <CheckoutHeader />
+          
+          <div className="p-4 sm:p-6 space-y-6">
+            <CheckoutForm
+              fullName={fullName}
+              companyName={companyName}
+              email={email}
+              onFullNameChange={setFullName}
+              onCompanyNameChange={setCompanyName}
+              onEmailChange={setEmail}
+              onSubmit={handleSubmit}
+              loading={loading}
+            />
+            <SecurityFeatures />
+          </div>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-200 flex items-center gap-2">
-              <User className="w-4 h-4 text-primary" />
-              Full Name
-              <span className="text-primary">*</span>
-            </label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-lg input-focus text-white"
-              placeholder="John Doe"
-              required
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-200 flex items-center gap-2">
-              <Mail className="w-4 h-4 text-primary" />
-              Email for License Delivery
-              <span className="text-primary">*</span>
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-lg input-focus text-white"
-              placeholder="your@email.com"
-              required
-            />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <div className="text-center space-y-1">
-            <div className="text-2xl font-bold">$599</div>
-            <div className="text-sm text-gray-400 line-through">Regular Price: $1,199</div>
-            <div className="text-primary font-semibold">Save 50% Today!</div>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full flex items-center justify-center gap-2 bg-[#0070ba] hover:bg-[#003087] text-white py-4 px-6 rounded-lg font-medium transition-colors"
-          >
-            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal" className="h-5" />
-            Checkout Securely
-          </button>
-        </div>
-
-        <div className="pt-4 border-t border-gray-700">
-          <div className="grid grid-cols-2 gap-3">
-            {securityFeatures.map((feature) => (
-              <div key={feature} className="flex items-center gap-2 text-xs text-gray-400">
-                <CheckCircle2 size={14} className="text-primary" />
-                <span>{feature}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </form>
-
-      <div className="mt-6 text-center text-sm text-gray-400">
+      <div className="mt-6 text-center text-sm text-gray-600">
         <p className="flex items-center justify-center gap-2">
           <Clock size={16} />
-          Limited time offer - Secure your license now!
+          Limited time offer - Secure it now!
         </p>
       </div>
+
+      {/* Order Summary Modal */}
+      {showSummary && (
+        <OrderSummary
+          fullName={fullName}
+          companyName={companyName}
+          email={email}
+          onClose={handleClose}
+          onSkip={handleSkip}
+          orderId={orderData?.orderId}
+          orderUrl={orderData?.url}
+        />
+      )}
     </motion.div>
   );
 };
