@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Shield, Gift, Zap } from "lucide-react";
+import { Clock, Gift, Zap } from "lucide-react";
 import { useHeroStore } from "../../hero/hero.ts";
 
 export const HeroFeatures = () => {
@@ -8,7 +8,7 @@ export const HeroFeatures = () => {
   if (isLoading || !heroData?.benefits) return null;
 
   const features = [
-    { icon: Shield, text: heroData.benefits[0], color: "text-blue-400" },
+    { icon: Clock, text: heroData.benefits[0], color: "text-blue-400" },
     { icon: Gift, text: heroData.benefits[1], color: "text-purple-400" },
     { icon: Zap, text: heroData.benefits[2], color: "text-yellow-400" }
   ];

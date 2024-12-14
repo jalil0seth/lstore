@@ -171,14 +171,14 @@ export const CheckoutForm = ({
             Processing...
           </>
         ) : (
-          <>
+          <div className="flex items-center gap-2 hover:brightness-0 hover:invert transition-all duration-200 ">
             <img 
-              src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" 
+              src="https://store.softsos.com/payment-logos/paypal.svg" 
               alt="PayPal" 
-              className="h-5"
+              className="h-5 brightness-0 invert"
             />
             Checkout Securely
-          </>
+          </div>
         )}
       </button>
     </form>

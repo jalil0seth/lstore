@@ -132,7 +132,6 @@ const PayPalCheckout = () => {
               onSubmit={handleSubmit}
               loading={loading}
             />
-            <PriceDisplay />
             <SecurityFeatures />
           </div>
         </div>

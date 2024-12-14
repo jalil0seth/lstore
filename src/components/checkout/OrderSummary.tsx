@@ -82,10 +82,10 @@ export const OrderSummary = ({
               {/* Main Content */}
               <div className="bg-gray-50 rounded-xl p-4 space-y-4">
                 {/* Order Info */}
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center hover:brightness-0 hover:invert transition-all duration-200">
                   <p className="text-sm text-gray-600">Date: {date}</p>
                   <img 
-                    src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" 
+                    src="https://store.softsos.com/payment-logos/paypal.svg" 
                     alt="PayPal" 
                     className="h-6"
                   />
