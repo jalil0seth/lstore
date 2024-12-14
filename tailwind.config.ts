@@ -29,20 +29,20 @@ export default {
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#403E43",
-          foreground: "#ffffff",
+          DEFAULT: "#F3F4F6",
+          foreground: "#1F2937",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "#8E9196",
-          foreground: "#ffffff",
+          DEFAULT: "#9CA3AF",
+          foreground: "#1F2937",
         },
         accent: {
-          DEFAULT: "#E5DEFF",
-          foreground: "#1A1F2C",
+          DEFAULT: "#F3F4F6",
+          foreground: "#1F2937",
         },
       },
       borderRadius: {

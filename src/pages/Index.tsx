@@ -6,16 +6,39 @@ import BenefitsSection from "@/components/sections/BenefitsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ProductShowcase from "@/components/sections/ProductShowcase";
 import { Footer } from "@/components/layout/Footer";
+import { useHeroStore } from "@/components/hero/hero.ts";
+
+const iconComponents = {
+  Building,
+  Shield,
+  Award,
+  Clock
+};
 
 const Index = () => {
+  const { heroData, isLoading, error } = useHeroStore();
+
+  if (isLoading) {
+    return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
+  }
+
+  if (error || !heroData) {
+    return <div className="flex items-center justify-center min-h-screen">Error loading data</div>;
+  }
+
   return (
     <AnimatePresence>
-      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900">
         <div className="container mx-auto px-4 py-8 space-y-12">
           <HeroSection />
 
           {/* Main Content Grid */}
           <div className="grid lg:grid-cols-2 gap-8 items-start">
+            {/* Mobile PayPal Checkout - Only visible on mobile */}
+            <div className="lg:hidden">
+              <PayPalCheckout />
+            </div>
+
             {/* Left Column - Product Info */}
             <div className="space-y-8">
               <ProductShowcase />
@@ -23,8 +46,8 @@ const Index = () => {
               <TestimonialsSection />
             </div>
 
-            {/* Right Column - PayPal Checkout */}
-            <div className="lg:sticky lg:top-8">
+            {/* Right Column - PayPal Checkout (Desktop) */}
+            <div className="hidden lg:block lg:sticky lg:top-8">
               <PayPalCheckout />
             </div>
           </div>
@@ -36,22 +59,20 @@ const Index = () => {
             transition={{ delay: 0.5 }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-center"
           >
-            {[
-              { icon: Building, label: "50,000+ Users", description: "Trusted worldwide" },
-              { icon: Shield, label: "PayPal Protected", description: "100% secure payments" },
-              { icon: Award, label: "Official License", description: "Genuine software" },
-              { icon: Clock, label: "24/7 Support", description: "Always here to help" }
-            ].map(({ icon: Icon, label, description }) => (
-              <motion.div
-                key={label}
-                whileHover={{ y: -4 }}
-                className="glass-card p-4 rounded-xl"
-              >
-                <Icon className="w-8 h-8 text-primary mx-auto mb-2" />
-                <p className="font-medium">{label}</p>
-                <p className="text-xs text-gray-400 mt-1">{description}</p>
-              </motion.div>
-            ))}
+            {heroData.trustIndicators.features.map((feature) => {
+              const Icon = iconComponents[feature.icon as keyof typeof iconComponents];
+              return (
+                <motion.div
+                  key={feature.title}
+                  whileHover={{ y: -4 }}
+                  className="bg-white border border-gray-200 shadow-lg p-4 rounded-xl"
+                >
+                  <Icon className="w-8 h-8 text-primary mx-auto mb-2" />
+                  <p className="font-medium text-gray-800">{feature.title}</p>
+                  <p className="text-xs text-gray-600 mt-1">{feature.description}</p>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
         <Footer />

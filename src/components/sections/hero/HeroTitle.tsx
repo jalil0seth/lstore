@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { heroData } from "../../hero/hero.ts";
+import { useState } from "react";
 
 export const HeroTitle = () => {
+  const [data] = useState(heroData);
+  
   return (
     <div className="space-y-4">
       {/* Top Banner */}
@@ -10,21 +14,21 @@ export const HeroTitle = () => {
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
-          <Star className="w-5 h-5 text-yellow-400" />
+          <Star className="w-5 h-5 text-yellow-500" />
         </motion.div>
-        <span className="text-sm font-medium">Special Offer - Save 50% Today!</span>
+        <span className="text-sm font-medium text-gray-700">{`${data.title} - ${data.saveAmount}`}</span>
       </div>
       
       <div className="space-y-4">
         <h1 className="text-4xl md:text-6xl font-bold">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-400 to-pink-400">
-            AutoCAD 2024 Professional
+            {data.productName}
           </span>
         </h1>
         
         <div className="max-w-2xl mx-auto">
-          <p className="text-xl text-gray-300">
-            Join 50,000+ professionals who trust our industry-leading CAD software
+          <p className="text-xl text-gray-700">
+            {data.subtitle}
           </p>
         </div>
       </div>

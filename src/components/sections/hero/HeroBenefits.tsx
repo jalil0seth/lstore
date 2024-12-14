@@ -1,19 +1,13 @@
 import { Check } from "lucide-react";
-
-const benefits = [
-  "Advanced 3D Modeling",
-  "Real-time Collaboration",
-  "Cloud Storage Included",
-  "24/7 Premium Support"
-];
+import { heroData } from "../../hero/hero.ts";
 
 export const HeroBenefits = () => {
   return (
     <div className="grid grid-cols-2 gap-2 max-w-md mx-auto text-left">
-      {benefits.map((benefit) => (
+      {heroData.features.map((benefit, index) => (
         <div key={benefit} className="flex items-center gap-2">
           <Check className="w-4 h-4 text-primary" />
-          <span className="text-sm text-gray-300">{benefit}</span>
+          <span className="text-sm text-gray-700">{benefit}</span>
         </div>
       ))}
     </div>

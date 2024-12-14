@@ -1,0 +1,4 @@
+1. Never delete existing code, keep current structure and flow, make only necessary additions
+2. Modify only requested parts, make minimal targeted updates, add code without breaking existing features
+3. Analyze code first, explain understanding, show changes before applying
+4. Keep same file organization, maintain existing functions, don't reorganize codebase
